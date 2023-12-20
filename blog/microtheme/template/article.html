@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    {% import 'translations.html' as translations with context %}
+    {% if translations.entry_hreflang(article) %}
+        {{ translations.entry_hreflang(article) }}
+    {% endif %}
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.summary|striptags }}">
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}">
+{% endblock %}
+
+{% block content %}
+    <h3>{{ article.title }}</h3>
+    <p class="infos">Publié le {{ article.date|strftime('%d/%m/%Y') }}{% if article.author %} et écrit par {{ article.author }}{% endif %}, dans la catégorie : {% if article.category %}<a title="Lien vers les publications marquée par la catégorie {{ article.category }}" href="{{ SITEURL }}/{{ article.category.url }}">#{{ article.category }} </a>{% endif %}</p>
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(article) }}
+    {{ article.content }}
+	{% include 'comments.html' %}
+{% endblock %}
