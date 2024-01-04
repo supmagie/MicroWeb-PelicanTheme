@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - {{ SITENAME }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+<meta property="og:title" content="{{ SITENAME }}">
+<meta property="og:description" content="{{ MOTTO }}">
+<meta property="og:url" content="{{ SITEURL }}">
+{% endblock %}
+
+{% block content %}
+    <h2 class="articles_recent">Articles recents : </h2>
+    {% for article in articles_page.object_list %}
+        <h3 class="titre_article_liste"><a title="Lien vers {{ article.title }}" class="post-link" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+        <p class="infos">Publié le {{ article.date|strftime('%d/%m/%Y') }} par {{ article.author }}, dans la catégorie : {% if article.category %}<a title="Lien vers les publications marquée par la catégorie {{ article.category }}" href="{{ SITEURL }}/{{ article.category.url }}" class="category-link">#{{ article.category }} </a>{% endif %}</p>
+        {{ article.summary }}
+        <hr/>
+    {% endfor %}
+    {% if articles_page.has_other_pages() %}
+        {% include 'pagination.html' %}
+    {% endif %}
+{% endblock %}
