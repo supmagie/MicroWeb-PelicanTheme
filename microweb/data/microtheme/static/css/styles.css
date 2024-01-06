@@ -14,14 +14,14 @@
 
 @font-face {
     font-family: 'luciole';
-    src: url('fonts/luciole.ttf') format('ttf');
+    src: url('../fonts/Luciole-Regular.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'luciole-bold';
-    src: url('fonts/luciole-bold.ttf') format('ttf');
+    src: url('../fonts/Luciole-Bold.ttf') format('ttf');
     font-weight: bold;
     font-style: bold;
 }
@@ -141,7 +141,11 @@ main {
     padding: auto;
     /* border: solid 3px rgb(92, 78, 78); */
     text-align: justify;
-    max-width: 1500px;
+    /* max-width: 1500px;*/
+}
+
+hr {
+    margin-top: 15px;
 }
 
 h2 {
@@ -258,7 +262,7 @@ a.post-link:hover {
 
 .pagination {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 /* small devices (phones, 600px and down) */

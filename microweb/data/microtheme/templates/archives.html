@@ -2,11 +2,10 @@
 
 {% block title %}Archives - {{ SITENAME }}{% endblock %}
 
-{% block header %}
-<h2 class="archives_title">Liste exhaustive des articles publiés à ce jour sur le blog : </h2>
-{% endblock %}
 
 {% block content %}
+<h2 class="archives_title">Liste exhaustive des articles publiés à ce jour sur le blog : </h2>
+
 <dl>
     {% for article in dates %}
         <dt><strong>{{ article.date|strftime('%d/%m/%Y') }}</strong></dt>
