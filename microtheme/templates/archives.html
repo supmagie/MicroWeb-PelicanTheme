@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Archives - {{ SITENAME }}{% endblock %}
+
+
+{% block content %}
+<h1 class="archives_title">Liste exhaustive des articles publiés à ce jour sur le blog : </h2>
+
+<dl>
+{% for article in dates %}
+    <dt class="archives_date"><strong>{{ article.date|strftime('%d/%m/%Y') }}</strong></dt>
+    <dd class="archives_articles_title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+{% endfor %}
+</dl>
+{% endblock %}

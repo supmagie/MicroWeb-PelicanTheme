@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.summary|striptags }}">
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="article_main_title">{{ article.title }}</h1>
+    <p class="infos_article">Publié le {{ article.date|strftime('%d/%m/%Y') }}{% if article.author %} et écrit par {{ article.author }}{% endif %}, dans la catégorie : {% if article.category %}<a title="Lien vers les publications marquée par la catégorie {{ article.category }}" href="{{ SITEURL }}/{{ article.category.url }}"  class="category-link">#{{ article.category }} </a>{% endif %}</p>
+    {{ article.content }}
+	{% include 'comments.html' %}
+{% endblock %}
